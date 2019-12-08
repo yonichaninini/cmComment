@@ -1,0 +1,44 @@
+.PostComment {
+  width: 100%;
+}
+.comment {
+  margin-left: 0px;
+  padding: 20px;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+
+  .comment-head {
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .creation-time {
+      color: darkgrey;
+    }
+  }
+  .comment-body {
+    margin-bottom: 16px;
+  }
+}
+.reply {
+  background-color: #ededed;
+  border-radius: 4px;
+  margin: 16px;
+  margin-left: 80px;
+  padding: 20px;
+
+  .comment-head {
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .creation-time {
+      color: darkgrey;
+    }
+  }
+  .comment-body {
+    margin-bottom: 16px;
+  }
+}
