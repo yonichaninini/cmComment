@@ -11,14 +11,29 @@ const PostComment = ({ commentData }: PostCommentProps) => {
   const comment = commentData.map(c => {
     return (
       <>
-        <Comment
-          key={c.comment_id}
-          creation_time={c.creation_time}
-          user_id={c.user_id}
-          comment_id={c.comment_id}
-          comment={c.comment}
-          children={c.children}
-        />
+        <div className="comment">
+          <Comment
+            key={c.comment_id}
+            creation_time={c.creation_time}
+            user_id={c.user_id}
+            comment_id={c.comment_id}
+            comment={c.comment}
+            children={c.children}
+          />
+        </div>
+        {c.children.map(r => {
+          return (
+            <div className="reply">
+              <Comment
+                key={r.comment_id}
+                creation_time={c.creation_time}
+                user_id={c.user_id}
+                comment_id={c.comment_id}
+                comment={c.comment}
+              />
+            </div>
+          );
+        })}
       </>
     );
   });

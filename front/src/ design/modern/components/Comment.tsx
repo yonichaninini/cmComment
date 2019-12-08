@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { ReplyDataShape } from "../../../model/comentShape";
-import CommentView from "../view/CommentView";
-import Reply from "./Reply";
+import CommentInput from "../components/CommentInput";
+import ReplyBtn from "../components/ReplyBtn";
 
 interface ComentProps {
   comment: string;
   creation_time: string;
   user_id: string;
   comment_id: number;
-  children: ReplyDataShape[];
+  children?: ReplyDataShape[];
 }
 
 const Comment = ({
@@ -18,31 +18,30 @@ const Comment = ({
   comment_id,
   children
 }: ComentProps) => {
+  const [isShowCommentInputBox, SetisShowCommentInputBox] = useState(false);
+  const onClickCommentBtn = (e: React.MouseEvent<HTMLElement>) => {
+    SetisShowCommentInputBox(!isShowCommentInputBox);
+  };
+  console.log(children);
   return (
     <>
-      <div className="comment">
-        <CommentView
-          comment={comment}
-          user_id={user_id}
-          creation_time={creation_time}
-          comment_id={comment_id}
-          children={children}
-        />
+      <div className="comment-head">
+        <div className="profile-nickname">{user_id}</div>
+        <div className="creation-time">{creation_time}</div>
       </div>
-      {children.map(c => {
-        return (
-          <Reply
-            key={c.comment_id}
-            id={c.id}
-            post_id={c.post_id}
-            user_id={c.user_id}
-            creation_time={c.creation_time}
-            comment_id={c.comment_id}
-            comment={c.comment}
-            parents={c.parents}
-          />
-        );
-      })}
+      <div className="comment-body">
+        <div className="comment-text">
+          <p>{comment}</p>
+        </div>
+      </div>
+      {isShowCommentInputBox ? (
+        <>
+          <ReplyBtn onClick={onClickCommentBtn} text="닫기" />
+          <CommentInput />
+        </>
+      ) : (
+        <ReplyBtn onClick={onClickCommentBtn} text="댓글작성하기" />
+      )}
     </>
   );
 };
