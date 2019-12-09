@@ -22,6 +22,15 @@
           margin-left: 20px;
           font-weight: 200;
         }
+        .show-reply-btn {
+          color: #d60036;
+          border: 0;
+          border: 1px solid #ededed;
+          padding: 0px 10px;
+          margin-left: 20px;
+          font-weight: 200;
+          font-size: 13px;
+        }
       }
       .comment-body {
         margin-bottom: 16px;
@@ -62,5 +71,8 @@
         border-bottom: 0.5px solid #ff3b6d;
       }
     }
+  }
+  .reply.hidden {
+    /*display: none;*/
   }
 }
