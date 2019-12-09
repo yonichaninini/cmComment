@@ -19,7 +19,7 @@
       box-sizing: border-box;
     }
   }
-  .submit-wrapper {
+  .bottom-wrapper {
     display: flex;
     justify-content: space-between;
     button {
@@ -30,6 +30,16 @@
       color: white;
       font-size: 15px;
       cursor: pointer;
+    }
+    .img-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 15%;
+      cursor: pointer;
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }

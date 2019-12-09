@@ -48,8 +48,14 @@ const App = () => {
   return (
     <div className="wrapper">
       <CommentInput />
-      <div className="comment-count">
-        댓글<span className="count-text">5개</span>
+      <div className="header-wrapper">
+        <div className="comment-count">
+          댓글<span className="count-text">5개</span>
+        </div>
+        <div className="comment-sort">
+          <span className="newest">최신순</span>
+          <span className="past">과거순</span>
+        </div>
       </div>
       <PostComment commentData={mock} />
     </div>

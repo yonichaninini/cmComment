@@ -39,3 +39,21 @@ a {
   margin-left: 10px;
   color: #d60036;
 }
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.comment-sort {
+  margin: 20px 0px;
+  padding-bottom: 20px;
+}
+.comment-sort span {
+  cursor: pointer;
+}
+.comment-sort span.newest {
+  margin-right: 10px;
+}
+.comment-sort span:hover {
+  transition: 0.3s;
+  color: #d60036;
+}
