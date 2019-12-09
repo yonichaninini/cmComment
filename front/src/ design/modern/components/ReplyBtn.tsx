@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/ReplyBtn.scss";
+import CommentInput from "./CommentInput";
 
-interface Props {
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
-  text: string;
-}
-
-const ReplyBtn = ({ onClick, text }: Props) => {
+const ReplyBtn = () => {
+  const [isShowCommentInputBox, SetIsShowCommentInputBox] = useState(false);
+  const onClickCommentBtn = (e: React.MouseEvent<HTMLElement>) => {
+    SetIsShowCommentInputBox(!isShowCommentInputBox);
+  };
   return (
-    <button type="submit" onClick={onClick} className="addReplyBtn">
-      {text}
-    </button>
+    <>
+      <button type="submit" onClick={onClickCommentBtn} className="addReplyBtn">
+        {isShowCommentInputBox ? "X" : "REPLY"}
+      </button>
+      {isShowCommentInputBox ? <CommentInput /> : ""}
+    </>
   );
 };
 

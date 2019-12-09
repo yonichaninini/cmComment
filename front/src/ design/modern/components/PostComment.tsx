@@ -13,13 +13,12 @@ const PostComment = ({ commentData }: PostCommentProps) => {
   const comment = commentData.map(c => {
     return (
       <>
-        <div className="comment">
+        <div className="comment" key={c.comment_id}>
           <div className="left">
             <ProfileImg />
           </div>
           <div className="right">
             <Comment
-              key={c.comment_id}
               creation_time={c.creation_time}
               user_id={c.user_id}
               comment_id={c.comment_id}
@@ -30,17 +29,16 @@ const PostComment = ({ commentData }: PostCommentProps) => {
         </div>
         {c.children.map(r => {
           return (
-            <div className="reply">
+            <div className="reply hidden" key={r.comment_id}>
               <div className="left">
                 <ProfileImg />
               </div>
               <div className="right">
                 <Comment
-                  key={r.comment_id}
-                  creation_time={c.creation_time}
-                  user_id={c.user_id}
-                  comment_id={c.comment_id}
-                  comment={c.comment}
+                  creation_time={r.creation_time}
+                  user_id={r.user_id}
+                  comment_id={r.comment_id}
+                  comment={r.comment}
                 />
               </div>
             </div>

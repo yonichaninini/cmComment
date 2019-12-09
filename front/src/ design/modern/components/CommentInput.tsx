@@ -4,7 +4,7 @@ const CommentInput = () => {
   return (
     <div className="commentInput">
       <div className="input-wrapper">
-        <textarea placeholder="댓글을 입력해 주세요.."></textarea>
+        <textarea placeholder="Please write a comment.."></textarea>
       </div>
       <div className="bottom-wrapper">
         <div className="img-wrapper">
@@ -13,7 +13,7 @@ const CommentInput = () => {
           <img src={require("../img/facebook.png")} />
           <img src={require("../img/naver.png")} />
         </div>
-        <button>등록</button>
+        <button>submit</button>
       </div>
     </div>
   );

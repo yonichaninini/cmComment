@@ -42,7 +42,45 @@ const App = () => {
       user_id: "희수",
       comment_id: 2,
       comment: "댓글테스트 기능",
-      children: []
+      children: [
+        {
+          id: "www.test.com",
+          creation_time: "2019-10-11 오전 08시 30분",
+          post_id: 1,
+          user_id: "주영",
+          comment_id: 8,
+          comment: "희수한테 대댓글테스트 기능",
+          parents: 1
+        }
+      ]
+    },
+    {
+      id: "www.test.com",
+      creation_time: "2019-10-11 오전 03시 30분",
+      post_id: 1,
+      user_id: "지우",
+      comment_id: 5,
+      comment: "오!멋져요!",
+      children: [
+        {
+          id: "www.test.com",
+          creation_time: "2019-10-11 오전 08시 30분",
+          post_id: 1,
+          user_id: "주영",
+          comment_id: 6,
+          comment: "뭐가멋져?",
+          parents: 1
+        },
+        {
+          id: "www.test.com",
+          creation_time: "2019-10-11 오전 08시 30분",
+          post_id: 1,
+          user_id: "찬미",
+          comment_id: 7,
+          comment: "모두멋져요!",
+          parents: 1
+        }
+      ]
     }
   ];
   return (
@@ -50,11 +88,11 @@ const App = () => {
       <CommentInput />
       <div className="header-wrapper">
         <div className="comment-count">
-          댓글<span className="count-text">5개</span>
+          Total comments<span className="count-text">{mock.length}</span>
         </div>
         <div className="comment-sort">
-          <span className="newest">최신순</span>
-          <span className="past">과거순</span>
+          <span className="newest">Newest</span>
+          <span className="past">past</span>
         </div>
       </div>
       <PostComment commentData={mock} />
