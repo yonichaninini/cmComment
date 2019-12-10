@@ -29,6 +29,7 @@
       background-color: #d60036;
       color: white;
       font-size: 15px;
+      border-radius: 3px;
       cursor: pointer;
     }
     .img-wrapper {
@@ -39,6 +40,7 @@
       img {
         width: 30px;
         height: 30px;
+        border-radius: 20%;
       }
     }
   }
