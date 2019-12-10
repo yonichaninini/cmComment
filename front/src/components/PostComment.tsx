@@ -1,26 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/comment.scss";
 
 import Comment from "./Comment";
 import ProfileImg from "./ProfileImg";
 
-import { CommentDataShape } from "../../../model/comentShape";
+import { CommentDataShape } from "../model/comentShape";
+import { UserDataShape } from "../model/userDataShape";
 
 interface PostCommentProps {
   commentData: CommentDataShape[];
+  userData: UserDataShape;
 }
-const PostComment = ({ commentData }: PostCommentProps) => {
+const PostComment = ({ commentData, userData }: PostCommentProps) => {
   const comment = commentData.map(c => {
+    console.log(c.user.user_profile_img);
     return (
       <>
         <div className="comment" key={c.comment_id}>
           <div className="left">
-            <ProfileImg />
+            <ProfileImg profile_img={c.user.user_profile_img} />
           </div>
           <div className="right">
             <Comment
               creation_time={c.creation_time}
-              user_id={c.user_id}
+              user_id={c.user.user_id}
+              nick_name={c.user.nick_name}
               comment_id={c.comment_id}
               comment={c.comment}
               children={c.children}
@@ -31,12 +35,13 @@ const PostComment = ({ commentData }: PostCommentProps) => {
           return (
             <div className="reply hidden" key={r.comment_id}>
               <div className="left">
-                <ProfileImg />
+                <ProfileImg profile_img={r.user.user_profile_img} />
               </div>
               <div className="right">
                 <Comment
                   creation_time={r.creation_time}
-                  user_id={r.user_id}
+                  user_id={r.user.user_id}
+                  nick_name={r.user.nick_name}
                   comment_id={r.comment_id}
                   comment={r.comment}
                 />

@@ -7,7 +7,7 @@ interface props {
 const ProfileImg = ({ profile_img }: props) => {
   return (
     <div className="profile_img">
-      <img src={require("../img/profile-icon.png")} />
+      <img src={profile_img} />
     </div>
   );
 };
