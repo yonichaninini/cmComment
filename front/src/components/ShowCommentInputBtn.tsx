@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/ReplyBtn.scss";
 import CommentInput from "./CommentInput";
 
-const ReplyBtn = () => {
+const ShowCommentInputBtn = () => {
   const [isShowCommentInputBox, SetIsShowCommentInputBox] = useState(false);
   const onClickCommentBtn = (e: React.MouseEvent<HTMLElement>) => {
     SetIsShowCommentInputBox(!isShowCommentInputBox);
@@ -17,4 +17,4 @@ const ReplyBtn = () => {
   );
 };
 
-export default ReplyBtn;
+export default ShowCommentInputBtn;
