@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import * as React from "react";
 import "../styles/comment.scss";
 
 import Comment from "./Comment";

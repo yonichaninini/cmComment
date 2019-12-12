@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import { ReplyDataShape } from "../model/comentShape";
 import ShowReplyBtn from "./ShowReplyBtn";
 import ShowCommentInputBtn from "./ShowCommentInputBtn";
