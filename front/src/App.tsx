@@ -17,7 +17,7 @@ const App = () => {
   };
   const mock: CommentDataShape[] = [
     {
-      id: "www.test.com",
+      comment_id: 1,
       creation_time: "2019-07-11 오전 11시 30분",
       post_id: 1,
       user: {
@@ -27,12 +27,10 @@ const App = () => {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
         nick_name: "윤이찬미"
       },
-
-      comment_id: 1,
       comment: "댓글테스트 기능",
       children: [
         {
-          id: "www.test.com",
+          comment_id: 3,
           creation_time: "2019-10-11 오전 08시 30분",
           post_id: 1,
           user: {
@@ -42,12 +40,11 @@ const App = () => {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
             nick_name: "민지"
           },
-          comment_id: 3,
           comment: "찬미한테 대댓글테스트 기능",
           parents: 1
         },
         {
-          id: "www.test.com",
+          comment_id: 4,
           creation_time: "2019-10-11 오전 08시 30분",
           post_id: 1,
           user: {
@@ -57,14 +54,13 @@ const App = () => {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
             nick_name: "주영"
           },
-          comment_id: 4,
           comment: "찬미한테 대댓글테스트 기능",
           parents: 1
         }
       ]
     },
     {
-      id: "www.test.com",
+      comment_id: 2,
       creation_time: "2019-10-11 오전 03시 30분",
       post_id: 1,
       user: {
@@ -74,11 +70,10 @@ const App = () => {
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
         nick_name: "주영"
       },
-      comment_id: 2,
       comment: "댓글테스트 기능",
       children: [
         {
-          id: "www.test.com",
+          comment_id: 8,
           creation_time: "2019-10-11 오전 08시 30분",
           post_id: 1,
           user: {
@@ -88,7 +83,6 @@ const App = () => {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
             nick_name: "지우"
           },
-          comment_id: 8,
           comment: "희수한테 대댓글테스트 기능",
           parents: 1
         }
