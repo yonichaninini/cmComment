@@ -1,11 +1,11 @@
 import * as React from "react";
 import "./App.css";
 
-import PostComment from "./components/PostComment";
+import CommentList from "./components/CommentList";
 import CommentInput from "./components/CommentInput";
 
-import { CommentDataShape } from "./model/comentShape";
-import { UserDataShape } from "./model/userDataShape";
+import { CommentDataShape } from "./typeShapes/comentShape";
+import { UserDataShape } from "./typeShapes/userDataShape";
 
 const App = () => {
   const user_mock: UserDataShape = {
@@ -73,7 +73,7 @@ const App = () => {
       comment: "댓글테스트 기능",
       children: [
         {
-          comment_id: 8,
+          comment_id: 5,
           creation_time: "2019-10-11 오전 08시 30분",
           post_id: 1,
           user: {
@@ -89,19 +89,24 @@ const App = () => {
       ]
     }
   ];
+  const commentDataMaxId = mock.reduce(
+    (prev, curr) =>
+      Math.max(prev, curr.comment_id, ...curr.children.map(v => v.comment_id)),
+    0
+  );
   return (
     <div className="wrapper">
       <CommentInput />
       <div className="header-wrapper">
         <div className="comment-count">
-          Total comments<span className="count-text">{mock.length}</span>
+          Total comments<span className="count-text">{commentDataMaxId}</span>
         </div>
         <div className="comment-sort">
           <span className="newest">Newest</span>
           <span className="past">past</span>
         </div>
       </div>
-      <PostComment commentData={mock} userData={user_mock} />
+      <CommentList commentData={mock} userData={user_mock} />
     </div>
   );
 };
