@@ -1,19 +1,18 @@
 import * as React from "react";
 import "../styles/comment.scss";
 
-import Comment from "./Comment";
+import CommentItem from "./CommentItem";
 import ProfileImg from "./ProfileImg";
 
-import { CommentDataShape } from "../model/comentShape";
-import { UserDataShape } from "../model/userDataShape";
+import { CommentDataShape } from "../typeShapes/comentShape";
+import { UserDataShape } from "../typeShapes/userDataShape";
 
-interface PostCommentProps {
+interface CommentListProps {
   commentData: CommentDataShape[];
   userData: UserDataShape;
 }
-const PostComment = ({ commentData, userData }: PostCommentProps) => {
+const CommentList = ({ commentData, userData }: CommentListProps) => {
   const comment = commentData.map(c => {
-    console.log(c.user.user_profile_img);
     return (
       <>
         <div className="comment" key={c.comment_id}>
@@ -21,7 +20,7 @@ const PostComment = ({ commentData, userData }: PostCommentProps) => {
             <ProfileImg profile_img={c.user.user_profile_img} />
           </div>
           <div className="right">
-            <Comment
+            <CommentItem
               creation_time={c.creation_time}
               user_id={c.user.user_id}
               nick_name={c.user.nick_name}
@@ -38,7 +37,7 @@ const PostComment = ({ commentData, userData }: PostCommentProps) => {
                 <ProfileImg profile_img={r.user.user_profile_img} />
               </div>
               <div className="right">
-                <Comment
+                <CommentItem
                   creation_time={r.creation_time}
                   user_id={r.user.user_id}
                   nick_name={r.user.nick_name}
@@ -55,9 +54,9 @@ const PostComment = ({ commentData, userData }: PostCommentProps) => {
 
   return (
     <>
-      <div className="PostComment">{comment}</div>
+      <div className="comment-list">{comment}</div>
     </>
   );
 };
 
-export default PostComment;
+export default CommentList;

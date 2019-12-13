@@ -8,7 +8,7 @@ const CommentInput = () => {
   };
   const [comment, setComment] = useState("");
   return (
-    <div className="commentInput">
+    <div className="comment-input">
       <form onSubmit={onsubmit}>
         <div className="input-wrapper">
           <textarea placeholder="Please write a comment.."></textarea>
