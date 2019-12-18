@@ -1,4 +1,4 @@
-import { UserDataShape } from './userDataShape';
+import { UserDataShape } from "./userDataShape";
 
 export interface CommentDataShape {
   comment_id: number;

@@ -42073,133 +42073,14 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./ design/modern/components/Comment.tsx":
-/*!***********************************************!*\
-  !*** ./ design/modern/components/Comment.tsx ***!
-  \***********************************************/
+/***/ "./App.css":
+/*!*****************!*\
+  !*** ./App.css ***!
+  \*****************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
-
-var Comment = function (_a) {
-  var comment = _a.comment,
-      user_id = _a.user_id,
-      creation_time = _a.creation_time;
-  return react_1.default.createElement(react_1.default.Fragment, null, react_1.default.createElement("div", {
-    className: "comment-head"
-  }, react_1.default.createElement("div", {
-    className: "profile-nickname"
-  }, user_id), react_1.default.createElement("div", {
-    className: "creation-time"
-  }, creation_time)), react_1.default.createElement("div", {
-    className: "comment-body"
-  }, react_1.default.createElement("div", {
-    className: "comment-text"
-  }, react_1.default.createElement("p", null, comment))));
-};
-
-exports.default = Comment;
-
-/***/ }),
-
-/***/ "./ design/modern/components/CommentInput.tsx":
-/*!****************************************************!*\
-  !*** ./ design/modern/components/CommentInput.tsx ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
-
-var CommentInput = function () {
-  return react_1.default.createElement("div", null, react_1.default.createElement("input", {
-    type: "text"
-  }), react_1.default.createElement("button", null, "\uB4F1\uB85D"));
-};
-
-exports.default = CommentInput;
-
-/***/ }),
-
-/***/ "./ design/modern/components/PostComment.tsx":
-/*!***************************************************!*\
-  !*** ./ design/modern/components/PostComment.tsx ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
-
-var Comment_1 = __importDefault(__webpack_require__(/*! ./Comment */ "./ design/modern/components/Comment.tsx"));
-
-var PostComment = function (_a) {
-  var commentData = _a.commentData;
-  var comment = commentData.map(function (c, index) {
-    return react_1.default.createElement("div", {
-      className: "comment",
-      key: index
-    }, react_1.default.createElement(Comment_1.default, {
-      creation_time: c.creation_time,
-      user_id: c.user_id,
-      comment: c.comment
-    }));
-  });
-  var reply = commentData.map(function (c, index) {
-    return react_1.default.createElement("div", {
-      className: "reply",
-      key: index
-    }, react_1.default.createElement(Comment_1.default, {
-      creation_time: c.creation_time,
-      user_id: c.user_id,
-      comment: c.comment
-    }));
-  });
-  return react_1.default.createElement(react_1.default.Fragment, null, react_1.default.createElement("div", {
-    className: "PostComment"
-  }, comment, reply));
-};
-
-exports.default = PostComment;
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -42213,6 +42094,14 @@ exports.default = PostComment;
 "use strict";
 
 
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -42223,38 +42112,505 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+var React = __importStar(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
 
-var PostComment_1 = __importDefault(__webpack_require__(/*! ./ design/modern/components/PostComment */ "./ design/modern/components/PostComment.tsx"));
+__webpack_require__(/*! ./App.css */ "./App.css");
 
-var CommentInput_1 = __importDefault(__webpack_require__(/*! ./ design/modern/components/CommentInput */ "./ design/modern/components/CommentInput.tsx"));
+var PostComment_1 = __importDefault(__webpack_require__(/*! ./components/PostComment */ "./components/PostComment.tsx"));
+
+var CommentInput_1 = __importDefault(__webpack_require__(/*! ./components/CommentInput */ "./components/CommentInput.tsx"));
 
 var App = function () {
+  var user_mock = {
+    user_id: "cksal5911",
+    loginType: "kakao",
+    user_profile_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
+    nick_name: "윤이찬미"
+  };
   var mock = [{
     id: "www.test.com",
     creation_time: "2019-07-11 오전 11시 30분",
     post_id: 1,
-    user_id: "cksal5911",
+    user: {
+      user_id: "cksal5911",
+      loginType: "kakao",
+      user_profile_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
+      nick_name: "윤이찬미"
+    },
     comment_id: 1,
     comment: "댓글테스트 기능",
-    depth: 0,
-    parents: "cksal5911"
+    children: [{
+      id: "www.test.com",
+      creation_time: "2019-10-11 오전 08시 30분",
+      post_id: 1,
+      user: {
+        user_id: "wldud5911",
+        loginType: "kakao",
+        user_profile_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
+        nick_name: "민지"
+      },
+      comment_id: 3,
+      comment: "찬미한테 대댓글테스트 기능",
+      parents: 1
+    }, {
+      id: "www.test.com",
+      creation_time: "2019-10-11 오전 08시 30분",
+      post_id: 1,
+      user: {
+        user_id: "jojo5911",
+        loginType: "kakao",
+        user_profile_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
+        nick_name: "주영"
+      },
+      comment_id: 4,
+      comment: "찬미한테 대댓글테스트 기능",
+      parents: 1
+    }]
   }, {
     id: "www.test.com",
-    creation_time: "2019-10-11 오전 08시 30분",
+    creation_time: "2019-10-11 오전 03시 30분",
     post_id: 1,
-    user_id: "wldud5911",
+    user: {
+      user_id: "jojo5911",
+      loginType: "kakao",
+      user_profile_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
+      nick_name: "주영"
+    },
     comment_id: 2,
-    comment: "대댓글테스트 기능",
-    depth: 1,
-    parents: "cksal5911"
+    comment: "댓글테스트 기능",
+    children: [{
+      id: "www.test.com",
+      creation_time: "2019-10-11 오전 08시 30분",
+      post_id: 1,
+      user: {
+        user_id: "jiwoo5911",
+        loginType: "kakao",
+        user_profile_img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
+        nick_name: "지우"
+      },
+      comment_id: 8,
+      comment: "희수한테 대댓글테스트 기능",
+      parents: 1
+    }]
   }];
-  return react_1.default.createElement(react_1.default.Fragment, null, react_1.default.createElement(CommentInput_1.default, null), react_1.default.createElement(PostComment_1.default, {
-    commentData: mock
+  return React.createElement("div", {
+    className: "wrapper"
+  }, React.createElement(CommentInput_1.default, null), React.createElement("div", {
+    className: "header-wrapper"
+  }, React.createElement("div", {
+    className: "comment-count"
+  }, "Total comments", React.createElement("span", {
+    className: "count-text"
+  }, mock.length)), React.createElement("div", {
+    className: "comment-sort"
+  }, React.createElement("span", {
+    className: "newest"
+  }, "Newest"), React.createElement("span", {
+    className: "past"
+  }, "past"))), React.createElement(PostComment_1.default, {
+    commentData: mock,
+    userData: user_mock
   }));
 };
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./components/Comment.tsx":
+/*!********************************!*\
+  !*** ./components/Comment.tsx ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+var ShowReplyBtn_1 = __importDefault(__webpack_require__(/*! ./ShowReplyBtn */ "./components/ShowReplyBtn.tsx"));
+
+var ShowCommentInputBtn_1 = __importDefault(__webpack_require__(/*! ./ShowCommentInputBtn */ "./components/ShowCommentInputBtn.tsx"));
+
+var Comment = function (_a) {
+  var comment = _a.comment,
+      user_id = _a.user_id,
+      creation_time = _a.creation_time,
+      comment_id = _a.comment_id,
+      nick_name = _a.nick_name,
+      children = _a.children;
+  return React.createElement(React.Fragment, null, React.createElement("div", {
+    className: "comment-head"
+  }, React.createElement("div", {
+    className: "profile-nickname"
+  }, nick_name), React.createElement("div", {
+    className: "creation-time"
+  }, creation_time), children ? React.createElement(ShowReplyBtn_1.default, {
+    childrenLength: children.length
+  }) : ""), React.createElement("div", {
+    className: "comment-body"
+  }, React.createElement("div", {
+    className: "comment-text"
+  }, React.createElement("p", null, comment))), React.createElement(ShowCommentInputBtn_1.default, null));
+};
+
+exports.default = Comment;
+
+/***/ }),
+
+/***/ "./components/CommentInput.tsx":
+/*!*************************************!*\
+  !*** ./components/CommentInput.tsx ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+var react_1 = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+
+__webpack_require__(/*! ../styles/commentInput.scss */ "./styles/commentInput.scss");
+
+var CommentInput = function () {
+  var onsubmit = function (e) {
+    e.preventDefault();
+  };
+
+  var _a = react_1.useState(""),
+      comment = _a[0],
+      setComment = _a[1];
+
+  return React.createElement("div", {
+    className: "commentInput"
+  }, React.createElement("form", {
+    onSubmit: onsubmit
+  }, React.createElement("div", {
+    className: "input-wrapper"
+  }, React.createElement("textarea", {
+    placeholder: "Please write a comment.."
+  })), React.createElement("div", {
+    className: "bottom-wrapper"
+  }, React.createElement("div", {
+    className: "img-wrapper"
+  }, React.createElement("img", {
+    src: __webpack_require__(/*! ../img/kakao.png */ "./img/kakao.png")
+  }), React.createElement("img", {
+    src: __webpack_require__(/*! ../img/google.png */ "./img/google.png")
+  }), React.createElement("img", {
+    src: __webpack_require__(/*! ../img/facebook.png */ "./img/facebook.png")
+  }), React.createElement("img", {
+    src: __webpack_require__(/*! ../img/naver.png */ "./img/naver.png")
+  })), React.createElement("button", {
+    type: "submit"
+  }, "submit"))));
+};
+
+exports.default = CommentInput;
+
+/***/ }),
+
+/***/ "./components/PostComment.tsx":
+/*!************************************!*\
+  !*** ./components/PostComment.tsx ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+__webpack_require__(/*! ../styles/comment.scss */ "./styles/comment.scss");
+
+var Comment_1 = __importDefault(__webpack_require__(/*! ./Comment */ "./components/Comment.tsx"));
+
+var ProfileImg_1 = __importDefault(__webpack_require__(/*! ./ProfileImg */ "./components/ProfileImg.tsx"));
+
+var PostComment = function (_a) {
+  var commentData = _a.commentData,
+      userData = _a.userData;
+  var comment = commentData.map(function (c) {
+    console.log(c.user.user_profile_img);
+    return React.createElement(React.Fragment, null, React.createElement("div", {
+      className: "comment",
+      key: c.comment_id
+    }, React.createElement("div", {
+      className: "left"
+    }, React.createElement(ProfileImg_1.default, {
+      profile_img: c.user.user_profile_img
+    })), React.createElement("div", {
+      className: "right"
+    }, React.createElement(Comment_1.default, {
+      creation_time: c.creation_time,
+      user_id: c.user.user_id,
+      nick_name: c.user.nick_name,
+      comment_id: c.comment_id,
+      comment: c.comment,
+      children: c.children
+    }))), c.children.map(function (r) {
+      return React.createElement("div", {
+        className: "reply hidden",
+        key: r.comment_id
+      }, React.createElement("div", {
+        className: "left"
+      }, React.createElement(ProfileImg_1.default, {
+        profile_img: r.user.user_profile_img
+      })), React.createElement("div", {
+        className: "right"
+      }, React.createElement(Comment_1.default, {
+        creation_time: r.creation_time,
+        user_id: r.user.user_id,
+        nick_name: r.user.nick_name,
+        comment_id: r.comment_id,
+        comment: r.comment
+      })));
+    }));
+  });
+  return React.createElement(React.Fragment, null, React.createElement("div", {
+    className: "PostComment"
+  }, comment));
+};
+
+exports.default = PostComment;
+
+/***/ }),
+
+/***/ "./components/ProfileImg.tsx":
+/*!***********************************!*\
+  !*** ./components/ProfileImg.tsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+__webpack_require__(/*! ../styles/profileImg.scss */ "./styles/profileImg.scss");
+
+var ProfileImg = function (_a) {
+  var profile_img = _a.profile_img;
+  return React.createElement("div", {
+    className: "profile_img"
+  }, React.createElement("img", {
+    src: profile_img
+  }));
+};
+
+exports.default = ProfileImg;
+
+/***/ }),
+
+/***/ "./components/ShowCommentInputBtn.tsx":
+/*!********************************************!*\
+  !*** ./components/ShowCommentInputBtn.tsx ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+var react_1 = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+
+__webpack_require__(/*! ../styles/ReplyBtn.scss */ "./styles/ReplyBtn.scss");
+
+var CommentInput_1 = __importDefault(__webpack_require__(/*! ./CommentInput */ "./components/CommentInput.tsx"));
+
+var ShowCommentInputBtn = function () {
+  var _a = react_1.useState(false),
+      isShowCommentInputBox = _a[0],
+      SetIsShowCommentInputBox = _a[1];
+
+  var onClickCommentBtn = function (e) {
+    SetIsShowCommentInputBox(!isShowCommentInputBox);
+  };
+
+  return React.createElement(React.Fragment, null, React.createElement("button", {
+    type: "submit",
+    onClick: onClickCommentBtn,
+    className: "addReplyBtn"
+  }, isShowCommentInputBox ? "X" : "REPLY"), isShowCommentInputBox ? React.createElement(CommentInput_1.default, null) : "");
+};
+
+exports.default = ShowCommentInputBtn;
+
+/***/ }),
+
+/***/ "./components/ShowReplyBtn.tsx":
+/*!*************************************!*\
+  !*** ./components/ShowReplyBtn.tsx ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+var react_1 = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+
+var ShowReplyBtn = function (_a) {
+  var childrenLength = _a.childrenLength;
+
+  var _b = react_1.useState(false),
+      isShowReply = _b[0],
+      SetIsShowReply = _b[1];
+
+  var onClickShowReplyBtn = function (e) {
+    SetIsShowReply(!isShowReply);
+  };
+
+  return React.createElement("button", {
+    className: "show-reply-btn",
+    onClick: onClickShowReplyBtn
+  }, "Reply : " + childrenLength);
+};
+
+exports.default = ShowReplyBtn;
+
+/***/ }),
+
+/***/ "./img/facebook.png":
+/*!**************************!*\
+  !*** ./img/facebook.png ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/img/facebook.png?7f2d2b40d8dc6ef03ce2df28d11f727b";
+
+/***/ }),
+
+/***/ "./img/google.png":
+/*!************************!*\
+  !*** ./img/google.png ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/img/google.png?d0c81d74d74d7a2ffd2a7b7a2bb4fe57";
+
+/***/ }),
+
+/***/ "./img/kakao.png":
+/*!***********************!*\
+  !*** ./img/kakao.png ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/img/kakao.png?93510b30f0ccca574bcfe55308783277";
+
+/***/ }),
+
+/***/ "./img/naver.png":
+/*!***********************!*\
+  !*** ./img/naver.png ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/img/naver.png?b0f0aa9537d9bd4ad27ab2404f53e1d4";
 
 /***/ }),
 
@@ -42293,6 +42649,50 @@ var ReactDOM = __importStar(__webpack_require__(/*! react-dom */ "../node_module
 var App_1 = __importDefault(__webpack_require__(/*! ./App */ "./App.tsx"));
 
 ReactDOM.render(React.createElement(App_1.default, null), document.getElementById("root"));
+
+/***/ }),
+
+/***/ "./styles/ReplyBtn.scss":
+/*!******************************!*\
+  !*** ./styles/ReplyBtn.scss ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./styles/comment.scss":
+/*!*****************************!*\
+  !*** ./styles/comment.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./styles/commentInput.scss":
+/*!**********************************!*\
+  !*** ./styles/commentInput.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./styles/profileImg.scss":
+/*!********************************!*\
+  !*** ./styles/profileImg.scss ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
