@@ -1,7 +1,23 @@
 import { CommentDataShape } from '../typeShapes/comentShape';
+import axios from 'axios';
 export class CommentManage {
-  getCommentData(): CommentDataShape[] {
-    return [];
+  comment: CommentDataShape[] = [];
+  page_url: string = '';
+  constructor(page_url: string) {
+    this.page_url = page_url;
+  }
+  getCommentData(): Promise<CommentDataShape[]> {
+    return new Promise((resolve: any, reject: any) => {
+      axios
+        .get<CommentDataShape[]>('/api/comment/' + this.page_url)
+        .then(res => {
+          this.comment = res.data;
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
   }
   createComment(): CommentDataShape[] {
     return [];
@@ -9,10 +25,10 @@ export class CommentManage {
   createReply(): CommentDataShape[] {
     return [];
   }
-  deleateComment(): CommentDataShape[] {
+  updateComment(): CommentDataShape[] {
     return [];
   }
-  updateComment(): CommentDataShape[] {
+  deleateComment(): CommentDataShape[] {
     return [];
   }
 }

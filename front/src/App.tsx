@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
-
+import { CommentManage } from './models/CommentManage';
 import CommentList from './components/CommentList';
 import CommentInput from './components/CommentInput';
 
@@ -83,20 +84,25 @@ const App = () => {
       ],
     },
   ];
-  const commentDataMaxId = mock.reduce((prev, curr) => Math.max(prev, curr.comment_id, ...curr.children.map(v => v.comment_id)), 0);
+  const commentManage = new CommentManage('1');
+  const [commentList, setCommentList] = useState<CommentDataShape[] | string>();
+  useEffect(() => {
+    commentManage.getCommentData().then(setCommentList);
+  }, []);
+
   return (
     <div className="wrapper">
       <CommentInput />
       <div className="header-wrapper">
         <div className="comment-count">
-          Total comments<span className="count-text">{commentDataMaxId}</span>
+          Total comments<span className="count-text"></span>
         </div>
         <div className="comment-sort">
           <span className="newest">Newest</span>
           <span className="past">past</span>
         </div>
       </div>
-      <CommentList commentData={mock} userData={user_mock} />
+      {commentList ? <CommentList commentData={CommentList} userData={user_mock} /> : ''}
     </div>
   );
 };
