@@ -3,13 +3,13 @@ import { commentModel } from '../models/comments';
 import { CommentInterface } from '../models/comments';
 
 const commentApi = {
+  //댓글 가져오기
   getComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     commentModel.find((err: string, comments: CommentInterface[]) => {
       if (err) {
         return res.status(500).send({ error: 'database failure' });
       }
       res.json(comments);
-      console.log(comments);
     });
   },
 

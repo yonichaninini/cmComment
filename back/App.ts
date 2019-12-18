@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-import commentApi from './apis/commentApi';
+import commentApi from './api/commentApi';
 
 const app = express();
 const port = process.env.PORT || 4000;
