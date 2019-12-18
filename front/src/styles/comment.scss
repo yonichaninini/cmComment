@@ -1,0 +1,74 @@
+.comment-list {
+  width: 100%;
+  .comment {
+    margin-left: 0px;
+    padding: 20px;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    display: flex;
+    .left {
+      margin-right: 20px;
+    }
+    .right {
+      width: 100%;
+      .comment-head {
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+
+        .creation-time {
+          color: darkgrey;
+          margin-left: 20px;
+          font-weight: 200;
+        }
+        .show-reply-btn {
+          color: #d60036;
+          border: 0;
+          border: 1px solid #ededed;
+          margin-left: 20px;
+          font-weight: 200;
+          font-size: 13px;
+          border-radius: 3px;
+        }
+      }
+      .comment-body {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  .reply {
+    background-color: #ededed;
+    border-radius: 4px;
+    margin: 16px;
+    margin-left: 80px;
+    padding: 20px;
+    display: flex;
+
+    .left {
+      margin-right: 20px;
+    }
+    .right {
+      width: 100%;
+      .comment-head {
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        .creation-time {
+          color: darkgrey;
+          font-weight: 200;
+          margin-left: 20px;
+        }
+      }
+      .comment-body {
+        margin-bottom: 16px;
+      }
+    }
+    .commentInput {
+      width: 100%;
+      border-radius: 3px;
+    }
+  }
+  .reply.hidden {
+    /*display: none;*/
+  }
+}

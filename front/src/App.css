@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 60px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+ul,
+a,
+textarea {
+  margin: 0;
+  padding: 0;
+}
+li,
+ul {
+  list-style: none;
+}
+a {
+  color: initial;
+  text-decoration: none;
+}
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+.comment-count {
+  margin: 20px 0px;
+  padding-bottom: 20px;
+}
+.count-text {
+  margin-left: 10px;
+  color: #d60036;
+}
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.comment-sort {
+  margin: 20px 0px;
+  padding-bottom: 20px;
+}
+.comment-sort span {
+  cursor: pointer;
+}
+.comment-sort span.newest {
+  margin-right: 10px;
+}
+.comment-sort span:hover {
+  transition: 0.3s;
+  color: #d60036;
+}
