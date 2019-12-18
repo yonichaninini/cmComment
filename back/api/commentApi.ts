@@ -36,7 +36,7 @@ const commentApi = {
     const comment = new commentModel();
     comment.comment = req.body.comment;
     comment.post_id = req.body.post_id;
-    comment.parents_id = req.body.parents_id;
+    //comment.parents_id = req.body.parents_id;
     comment.creation_time = req.body.creation_time;
     comment.save((err: any) => {
       if (err) {

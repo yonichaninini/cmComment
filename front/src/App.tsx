@@ -85,7 +85,7 @@ const App = () => {
     },
   ];
   const commentManage = new CommentManage('1');
-  const [commentList, setCommentList] = useState<CommentDataShape[] | string>();
+  const [commentList, setCommentList] = useState<CommentDataShape[]>();
   useEffect(() => {
     commentManage.getCommentData().then(setCommentList);
   }, []);
@@ -102,7 +102,7 @@ const App = () => {
           <span className="past">past</span>
         </div>
       </div>
-      {commentList ? <CommentList commentData={CommentList} userData={user_mock} /> : ''}
+      {commentList ? <CommentList commentData={commentList} userData={user_mock} /> : ''}
     </div>
   );
 };
