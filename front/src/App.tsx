@@ -1,99 +1,89 @@
-import * as React from "react";
-import "./App.css";
+import * as React from 'react';
+import './App.css';
 
-import CommentList from "./components/CommentList";
-import CommentInput from "./components/CommentInput";
+import CommentList from './components/CommentList';
+import CommentInput from './components/CommentInput';
 
-import { CommentDataShape } from "./typeShapes/comentShape";
-import { UserDataShape } from "./typeShapes/userDataShape";
+import { CommentDataShape } from './typeShapes/comentShape';
+import { UserDataShape } from './typeShapes/userDataShape';
 
 const App = () => {
   const user_mock: UserDataShape = {
-    user_id: "cksal5911",
-    loginType: "kakao",
-    user_profile_img:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
-    nick_name: "윤이찬미"
+    user_id: 'cksal5911',
+    loginType: 'kakao',
+    user_profile_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s',
+    nick_name: '윤이찬미',
   };
   const mock: CommentDataShape[] = [
     {
       comment_id: 1,
-      creation_time: "2019-07-11 오전 11시 30분",
+      creation_time: '2019-07-11 오전 11시 30분',
       post_id: 1,
       user: {
-        user_id: "cksal5911",
-        loginType: "kakao",
-        user_profile_img:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
-        nick_name: "윤이찬미"
+        user_id: 'cksal5911',
+        loginType: 'kakao',
+        user_profile_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s',
+        nick_name: '윤이찬미',
       },
-      comment: "댓글테스트 기능",
+      comment: '댓글테스트 기능',
       children: [
         {
           comment_id: 3,
-          creation_time: "2019-10-11 오전 08시 30분",
+          creation_time: '2019-10-11 오전 08시 30분',
           post_id: 1,
           user: {
-            user_id: "wldud5911",
-            loginType: "kakao",
-            user_profile_img:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
-            nick_name: "민지"
+            user_id: 'wldud5911',
+            loginType: 'kakao',
+            user_profile_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s',
+            nick_name: '민지',
           },
-          comment: "찬미한테 대댓글테스트 기능",
-          parents: 1
+          comment: '찬미한테 대댓글테스트 기능',
+          parents: 1,
         },
         {
           comment_id: 4,
-          creation_time: "2019-10-11 오전 08시 30분",
+          creation_time: '2019-10-11 오전 08시 30분',
           post_id: 1,
           user: {
-            user_id: "jojo5911",
-            loginType: "kakao",
-            user_profile_img:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
-            nick_name: "주영"
+            user_id: 'jojo5911',
+            loginType: 'kakao',
+            user_profile_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s',
+            nick_name: '주영',
           },
-          comment: "찬미한테 대댓글테스트 기능",
-          parents: 1
-        }
-      ]
+          comment: '찬미한테 대댓글테스트 기능',
+          parents: 1,
+        },
+      ],
     },
     {
       comment_id: 2,
-      creation_time: "2019-10-11 오전 03시 30분",
+      creation_time: '2019-10-11 오전 03시 30분',
       post_id: 1,
       user: {
-        user_id: "jojo5911",
-        loginType: "kakao",
-        user_profile_img:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
-        nick_name: "주영"
+        user_id: 'jojo5911',
+        loginType: 'kakao',
+        user_profile_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s',
+        nick_name: '주영',
       },
-      comment: "댓글테스트 기능",
+      comment: '댓글테스트 기능',
       children: [
         {
           comment_id: 5,
-          creation_time: "2019-10-11 오전 08시 30분",
+          creation_time: '2019-10-11 오전 08시 30분',
           post_id: 1,
           user: {
-            user_id: "jiwoo5911",
-            loginType: "kakao",
-            user_profile_img:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s",
-            nick_name: "지우"
+            user_id: 'jiwoo5911',
+            loginType: 'kakao',
+            user_profile_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s',
+            nick_name: '지우',
           },
-          comment: "희수한테 대댓글테스트 기능",
-          parents: 1
-        }
-      ]
-    }
+          comment: '희수한테 대댓글테스트 기능',
+          parents: 1,
+        },
+      ],
+    },
   ];
-  const commentDataMaxId = mock.reduce(
-    (prev, curr) =>
-      Math.max(prev, curr.comment_id, ...curr.children.map(v => v.comment_id)),
-    0
-  );
+  const commentDataMaxId = mock.reduce((prev, curr) => Math.max(prev, curr.comment_id, ...curr.children.map(v => v.comment_id)), 0);
   return (
     <div className="wrapper">
       <CommentInput />
