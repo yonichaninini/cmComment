@@ -48,7 +48,7 @@ const commentApi = {
       res.json({ result: 1 });
     });
   },
-
+  //해당페이지이 댓글 수정
   putComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     commentModel.findById(req.params.comment_id, (err: any, comment: any) => {
       if (err) {
@@ -56,20 +56,20 @@ const commentApi = {
       }
       if (!comment) return res.status(404).json({ error: 'comment not found' });
       comment.comment = req.body.comment;
-      comment.creation_time = new Date(req.body.creation_time);
+      comment.update_time = new Date(req.body.update_time);
       comment.save((err: string) => {
         if (err) res.status(500).json({ error: 'failed to update' });
         res.json({ message: 'comment updated' });
       });
     });
   },
-
+  //해당페이지의 댓글 삭제
   deleteComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     commentModel.remove({ comment_id: req.body.comment_id }, (err: any) => {
       if (err) return res.status(500).json({ error: 'database failure' });
       res.status(204).end();
     });
   },
+  //페이징
 };
 export default commentApi;
-//해당페이지의 댓글들 불러오기

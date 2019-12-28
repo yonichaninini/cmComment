@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
 export interface CommentInterface extends mongoose.Document {
   comment_id: number;
-  creation_time: string;
+  creation_time: number;
   post_id: number;
   user: {
     user_id: string;
@@ -14,7 +15,7 @@ export interface CommentInterface extends mongoose.Document {
   children: [
     {
       comment_id: number;
-      creation_time: string;
+      creation_time: number;
       post_id: number;
       user: {
         user_id: string;
@@ -28,11 +29,8 @@ export interface CommentInterface extends mongoose.Document {
   ];
 }
 
-const Schema = mongoose.Schema;
-
-const conmmentSchema = new Schema({
-  comment_id: Number,
-  creation_time: String,
+const commentSchema = new Schema({
+  creation_time: Number,
   post_id: Number,
   user: {
     user_id: String,
@@ -44,7 +42,7 @@ const conmmentSchema = new Schema({
   children: [
     {
       comment_id: Number,
-      creation_time: String,
+      creation_time: Number,
       post_id: Number,
       user: {
         user_id: String,
@@ -57,5 +55,5 @@ const conmmentSchema = new Schema({
     },
   ],
 });
-
-export const commentModel = mongoose.model<CommentInterface>('Comment', conmmentSchema);
+export default commentSchema;
+export const commentModel = mongoose.model<CommentInterface>('Comment', commentSchema);

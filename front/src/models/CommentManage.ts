@@ -7,7 +7,7 @@ export class CommentManage {
     this.page_url = page_url;
   }
   getCommentData(): Promise<CommentDataShape[]> {
-    return new Promise((resolve: any, reject: any) => {
+    return new Promise((resolve, reject) => {
       axios
         .get<CommentDataShape[]>('/api/comment/' + this.page_url)
         .then(res => {

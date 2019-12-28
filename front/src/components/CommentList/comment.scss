@@ -14,11 +14,12 @@
       .comment-head {
         font-weight: 700;
         margin-bottom: 20px;
-        display: flex;
+        //display: flex;
 
         .creation-time {
           color: darkgrey;
-          margin-left: 20px;
+          //margin-left: 20px;
+          font-size: 13px;
           font-weight: 200;
         }
         .show-reply-btn {
@@ -52,11 +53,13 @@
       .comment-head {
         font-weight: 700;
         margin-bottom: 20px;
-        display: flex;
+        //display: flex;
+        justify-content: space-around;
         .creation-time {
           color: darkgrey;
           font-weight: 200;
-          margin-left: 20px;
+          font-size: 13px;
+          //margin-left: 20px;
         }
       }
       .comment-body {

@@ -1,6 +1,6 @@
-import * as React from "react";
-import "../styles/profileImg.scss";
-interface props {
+import * as React from 'react';
+import './profileImg.scss';
+export interface props {
   profile_img?: string;
 }
 

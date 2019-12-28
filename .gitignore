@@ -3,4 +3,6 @@ package-lock.json
 dist/
 .env
 memo
+testMock/
 package.lock.json
+config.json

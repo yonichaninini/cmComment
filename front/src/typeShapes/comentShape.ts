@@ -2,7 +2,8 @@ import { UserDataShape } from './userDataShape';
 
 export interface CommentDataShape {
   comment_id: number;
-  creation_time: string;
+  creation_time: number;
+  update_time: number;
   post_id: number;
   user: UserDataShape;
   comment: string;
@@ -10,7 +11,8 @@ export interface CommentDataShape {
 }
 export interface ReplyDataShape {
   comment_id: number;
-  creation_time: string;
+  creation_time: number;
+  update_time: number;
   post_id: number;
   user: UserDataShape;
   comment: string;
