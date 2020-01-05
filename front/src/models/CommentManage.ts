@@ -2,14 +2,16 @@ import { CommentDataShape } from '../typeShapes/comentShape';
 import axios from 'axios';
 export class CommentManage {
   comment: CommentDataShape[] = [];
-  page_url: string = '';
-  constructor(page_url: string) {
-    this.page_url = page_url;
+  post_id: string = '1';
+  constructor(post_id: string) {
+    this.post_id = '1';
   }
   getCommentData(): Promise<CommentDataShape[]> {
     return new Promise((resolve, reject) => {
       axios
-        .get<CommentDataShape[]>('/api/comment/' + this.page_url)
+        .get<CommentDataShape[]>('/api/comment/' + this.post_id, {
+          params: this.post_id,
+        })
         .then(res => {
           this.comment = res.data;
           resolve(res.data);

@@ -14,13 +14,21 @@
       .comment-head {
         font-weight: 700;
         margin-bottom: 20px;
-        //display: flex;
-
-        .creation-time {
-          color: darkgrey;
-          //margin-left: 20px;
-          font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        .information {
+          .create_time {
+            color: darkgrey;
+            font-weight: 200;
+            font-size: 13px;
+            //margin-left: 20px;
+          }
+        }
+        .delete_icon {
+          color: grey;
           font-weight: 200;
+          font-size: 13px;
+          border: 0;
         }
         .show-reply-btn {
           color: #d60036;
@@ -53,13 +61,22 @@
       .comment-head {
         font-weight: 700;
         margin-bottom: 20px;
-        //display: flex;
-        justify-content: space-around;
-        .creation-time {
-          color: darkgrey;
+        display: flex;
+        justify-content: space-between;
+        .information {
+          .create_time {
+            color: darkgrey;
+            font-weight: 200;
+            font-size: 13px;
+            //margin-left: 20px;
+          }
+        }
+
+        .delete_icon {
+          color: grey;
           font-weight: 200;
           font-size: 13px;
-          //margin-left: 20px;
+          border: 0;
         }
       }
       .comment-body {

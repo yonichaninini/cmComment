@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-export interface CommentInterface extends mongoose.Document {
-  create_time: string;
-  update_time: string;
+export interface ReplyInterface extends mongoose.Document {
+  comment_id: number;
+  creation_time: string;
   post_id: number;
   user: {
     user_id: string;
@@ -11,12 +11,11 @@ export interface CommentInterface extends mongoose.Document {
     nick_name: string;
   };
   comment: string;
-  children: [];
+  parents: number;
 }
-
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
-const conmmentSchema = new Schema({
+
+const replySchema = new Schema({
   create_time: Date,
   update_time: Date,
   post_id: Number,
@@ -27,7 +26,7 @@ const conmmentSchema = new Schema({
     nick_name: String,
   },
   comment: String,
-  children: [{ type: ObjectId, ref: 'Reply' }],
+  parents: Number,
 });
 
-export const commentModel = mongoose.model<CommentInterface>('Comment', conmmentSchema);
+export const replyModel = mongoose.model<ReplyInterface>('Reply', replySchema);

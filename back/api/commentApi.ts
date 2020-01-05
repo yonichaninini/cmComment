@@ -1,56 +1,65 @@
 import express from 'express';
 import { commentModel } from '../models/comments';
 import { CommentInterface } from '../models/comments';
+import { ReplyInterface } from '../models/replys';
+import { replyModel } from '../models/replys';
 
 const commentApi = {
   //댓글 가져오기
   getComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    commentModel.find((err: string, comments: CommentInterface[]) => {
-      if (err) {
+    commentModel
+      .find({ post_id: req.params.post_id })
+      .sort({ create_time: -1 })
+      .then((comments: CommentInterface[]) => {
+        res.json(comments);
+      })
+      .catch(err => {
         return res.status(500).send({ error: 'database failure' });
-      }
-      res.json(comments);
-    });
+      });
   },
 
   //해당페이지에 댓글 추가
   postComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    const comment = new commentModel();
-    comment.comment = req.body.comment;
-    comment.post_id = req.body.post_id;
-    comment.creation_time = req.body.creation_time;
+    const comment = new commentModel({
+      create_time: new Date(),
+      update_time: new Date(),
+      comment: req.body.comment,
+      post_id: req.body.post_id,
+      user: req.body.user,
+      children: [],
+    });
     comment.save((err: any) => {
       if (err) {
         console.error(err);
         res.json({ result: 0 });
         return;
       }
-
       res.json({ result: 1 });
     });
-    res.end();
   },
 
   //해당페이지에 대댓글 추가
   postReply: (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    const comment = new commentModel();
-    comment.comment = req.body.comment;
-    comment.post_id = req.body.post_id;
-    //comment.parents_id = req.body.parents_id;
-    comment.creation_time = req.body.creation_time;
-    comment.save((err: any) => {
+    const reply = new replyModel({
+      create_time: new Date(),
+      update_time: new Date(),
+      comment: req.body.comment,
+      post_id: req.body.post_id,
+      user: req.body.user,
+      parents: req.body.parents,
+    });
+    console.log(reply._id);
+    reply.save((err: any) => {
       if (err) {
-        console.error(err);
+        console.log(err);
         res.json({ result: 0 });
-        return;
       }
-
-      res.json({ result: 1 });
+      commentModel.update({ _id: req.body.parents }, { $push: { children: reply._id } });
     });
   },
   //해당페이지이 댓글 수정
   putComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    commentModel.findById(req.params.comment_id, (err: any, comment: any) => {
+    commentModel.findById(req.params._id, (err: any, comment: any) => {
       if (err) {
         return res.status(500).json({ error: 'database failure' });
       }
@@ -65,7 +74,8 @@ const commentApi = {
   },
   //해당페이지의 댓글 삭제
   deleteComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    commentModel.remove({ comment_id: req.body.comment_id }, (err: any) => {
+    console.log(req.body._id);
+    commentModel.deleteMany({ _id: req.body._id }, (err: any) => {
       if (err) return res.status(500).json({ error: 'database failure' });
       res.status(204).end();
     });
