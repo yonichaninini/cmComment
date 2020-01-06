@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import commentApi from './api/commentApi';
+import config from './config/config.json';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -13,7 +14,7 @@ dotenv.config({ path: __dirname + '/config/.env' });
 const db = mongoose.connection;
 const { ObjectId } = require('mongodb');
 console.log(ObjectId());
-mongoose.connect('mongodb://localhost:27017/commentDB', { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }, (err: any) => {
+mongoose.connect(config.MONGO_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }, (err: any) => {
   if (err) {
     console.log(err);
   } else {
