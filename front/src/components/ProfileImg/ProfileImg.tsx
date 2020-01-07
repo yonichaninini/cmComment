@@ -4,10 +4,10 @@ export interface props {
   profile_img?: string;
 }
 
-const ProfileImg = ({ profile_img }: props) => {
+const ProfileImg = () => {
   return (
     <div className="profile_img">
-      <img src={profile_img} />
+      <img src={require('../../img/profile-icon.png')} />
     </div>
   );
 };
