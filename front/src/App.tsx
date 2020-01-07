@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+/*css*/
 import './App.css';
+/*model*/
 import { CommentManage } from './models/CommentManage';
-import CommentList from './components/CommentList/CommentList';
-import CommentInput from './components/CommentInput/CommentInput';
-
+/*type*/
 import { CommentDataShape } from './typeShapes/comentShape';
 import { UserDataShape } from './typeShapes/userDataShape';
+/*component*/
+import CommentList from './components/CommentList/CommentList';
+import CommentInput from './components/CommentInput/CommentInput';
 import CommentSortBtn from './components/CommentSortBtn/CommentSortBtn';
+import { NativeError } from 'mongoose';
 
 const App = () => {
   const user_mock: UserDataShape = {
-    user_id: 'cksal5911',
-    loginType: 'kakao',
-    user_profile_img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhaNckqtbF2gR0kMvWGhwe7ad4BvVAnAcHQqhgiIzp9mXSPXv4Q&s',
-    nick_name: '윤이찬미',
+    user_email: 'cksal5911@naver.com',
+    user_password: '1234',
   };
   const commentManage = new CommentManage('1');
   const [commentList, setCommentList] = useState<CommentDataShape[]>();

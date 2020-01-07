@@ -9,6 +9,7 @@ const commentApi = {
   getComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     commentModel
       .find({ post_id: req.params.post_id })
+      .populate('children')
       .sort({ create_time: -1 })
       .then((comments: CommentInterface[]) => {
         res.json(comments);
@@ -48,13 +49,16 @@ const commentApi = {
       user: req.body.user,
       parents: req.body.parents,
     });
-    console.log(reply._id);
     reply.save((err: any) => {
       if (err) {
         console.log(err);
         res.json({ result: 0 });
       }
-      commentModel.update({ _id: req.body.parents }, { $push: { children: reply._id } });
+    });
+    commentModel.updateOne({ _id: req.body.parents }, { $push: { children: reply._id } }, (err, row) => {
+      if (err) {
+        console.error(err);
+      }
     });
   },
   //해당페이지이 댓글 수정
@@ -74,8 +78,12 @@ const commentApi = {
   },
   //해당페이지의 댓글 삭제
   deleteComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.log(req.body._id);
-    commentModel.deleteMany({ _id: req.body._id }, (err: any) => {
+    console.log(req.body.password);
+    commentModel.deleteOne({ _id: req.body._id }, err => {
+      if (err) return res.status(500).json({ error: 'database failure' });
+      res.status(204).end();
+    });
+    replyModel.deleteOne({ _id: req.body._id }, err => {
       if (err) return res.status(500).json({ error: 'database failure' });
       res.status(204).end();
     });

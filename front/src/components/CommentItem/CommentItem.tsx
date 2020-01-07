@@ -1,50 +1,48 @@
 import * as React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
 
 import { ReplyDataShape } from '../../typeShapes/comentShape';
 import CommentInput from '../CommentInput/CommentInput';
 import { dateFormat } from '../../utils/dateFormat';
+import { CommentManage } from '../../models/CommentManage';
 
 interface ComentProps {
   _id: string;
   create_time: number;
-  update_time: number;
-  user_id: string;
   comment: string;
-  nick_name?: string;
-  children?: ReplyDataShape[];
+  isparents: boolean;
 }
 
-const Comment = ({ _id, comment, user_id, create_time, nick_name, children, update_time }: ComentProps) => {
+const Comment = ({ _id, comment, create_time, isparents }: ComentProps) => {
   const [isShowCommentInputBox, SetIsShowCommentInputBox] = useState(false);
+  const [password, setPassword] = useState('');
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const onClickShowCommentInput = (e: React.MouseEvent<HTMLElement>) => {
     SetIsShowCommentInputBox(!isShowCommentInputBox);
     //TODO
   };
+  const commentManage = new CommentManage('1');
   const create_date = dateFormat(String(create_time));
+
   const deleteBtnClick = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    axios({
-      method: 'delete',
-      url: '/api/delete_comment/1/' + _id,
-      data: {
-        _id: _id,
-      },
-    })
-      .then(res => {
-        window.location.reload();
-      })
-      .catch(err => {
-        alert('삭제에 실패하였습니다. 관리자에게 문의하시기 바랍니다.');
-        console.log(err);
-      });
+    setIsOpenModal(true);
+  };
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.currentTarget.value);
+  };
+  const onSubmitPasswordCheck = (e: React.FormEvent<HTMLElement>) => {
+    commentManage.deleateComment(_id, password);
+    setIsOpenModal(false);
+  };
+  const CancelBtnClick = (e: React.FormEvent<HTMLElement>) => {
+    setIsOpenModal(false);
   };
   return (
     <>
       <div className="comment-head">
         <div className="information">
-          <div className="profile-nickname">{nick_name}</div>
+          <div className="profile-nickname">익명</div>
           <div className="create_time">작성일 : {create_date}</div>
         </div>
         <button className="delete_icon" onClick={deleteBtnClick}>
@@ -56,10 +54,25 @@ const Comment = ({ _id, comment, user_id, create_time, nick_name, children, upda
           <p>{comment}</p>
         </div>
       </div>
-      <button type="submit" onClick={onClickShowCommentInput} className="add-reply-btn">
-        {isShowCommentInputBox ? 'X' : 'REPLY'}
-      </button>
+      {isparents ? (
+        <button type="submit" onClick={onClickShowCommentInput} className="add-reply-btn">
+          {isShowCommentInputBox ? 'X' : 'REPLY'}
+        </button>
+      ) : (
+        ''
+      )}
       {isShowCommentInputBox ? <CommentInput _id={_id} isReply={isShowCommentInputBox} /> : ''}
+      {isOpenModal ? (
+        <form onSubmit={onSubmitPasswordCheck}>
+          <input type="password" placeholder="댓글 작성시 입력한 비밀번호를 적어주세요" onChange={onChangePassword}></input>
+          <button type="submit">확인</button>
+          <button type="button" onClick={CancelBtnClick}>
+            취소
+          </button>
+        </form>
+      ) : (
+        ''
+      )}
     </>
   );
 };
