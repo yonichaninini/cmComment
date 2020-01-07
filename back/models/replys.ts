@@ -5,13 +5,11 @@ export interface ReplyInterface extends mongoose.Document {
   creation_time: string;
   post_id: number;
   user: {
-    user_id: string;
-    loginType: string;
-    user_profile_img: string;
-    nick_name: string;
+    user_email: string;
+    user_password: string;
   };
   comment: string;
-  parents: number;
+  parents: string;
 }
 const Schema = mongoose.Schema;
 
@@ -20,13 +18,11 @@ const replySchema = new Schema({
   update_time: Date,
   post_id: Number,
   user: {
-    user_id: String,
-    loginType: String,
-    user_profile_img: String,
-    nick_name: String,
+    user_email: String,
+    user_password: String,
   },
   comment: String,
-  parents: Number,
+  parents: String,
 });
 
 export const replyModel = mongoose.model<ReplyInterface>('Reply', replySchema);
