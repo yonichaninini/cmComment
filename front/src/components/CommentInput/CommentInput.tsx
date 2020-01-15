@@ -31,6 +31,9 @@ const CommentInput = ({ isReply, _id }: props) => {
     } else {
       commentManage.createComment(comment, email, password);
     }
+    setComment('');
+    setEmail('');
+    setPassword('');
   };
   return (
     <>
