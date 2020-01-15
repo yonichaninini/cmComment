@@ -1,8 +1,9 @@
 import express from 'express';
 import { commentModel } from '../models/comments';
 import { CommentInterface } from '../models/comments';
-import { ReplyInterface } from '../models/replys';
 import { replyModel } from '../models/replys';
+
+import bcrypt from 'bcrypt-nodejs';
 
 const commentApi = {
   //댓글 가져오기
@@ -21,6 +22,14 @@ const commentApi = {
 
   //해당페이지에 댓글 추가
   postComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    /*bcrypt.hash(req.body.user.user_password, '', function(err, hash) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(hash);
+      }
+    });*/
+
     const comment = new commentModel({
       create_time: new Date(),
       update_time: new Date(),
@@ -78,12 +87,11 @@ const commentApi = {
   },
   //해당페이지의 댓글 삭제
   deleteComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.log(req.body.password);
-    commentModel.deleteOne({ _id: req.body._id }, err => {
+    commentModel.deleteOne({ _id: req.body._id, 'user.user_password': req.body.password }, err => {
       if (err) return res.status(500).json({ error: 'database failure' });
       res.status(204).end();
     });
-    replyModel.deleteOne({ _id: req.body._id }, err => {
+    replyModel.deleteOne({ _id: req.body._id, 'user.user_password': req.body.password }, err => {
       if (err) return res.status(500).json({ error: 'database failure' });
       res.status(204).end();
     });
