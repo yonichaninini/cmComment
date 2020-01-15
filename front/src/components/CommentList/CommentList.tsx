@@ -5,14 +5,12 @@ import CommentItem from '../CommentItem/CommentItem';
 import ProfileImg from '../ProfileImg/ProfileImg';
 
 import { CommentDataShape } from '../../typeShapes/comentShape';
-import { UserDataShape } from '../../typeShapes/userDataShape';
 
 interface CommentListProps {
   commentData: CommentDataShape[];
-  userData: UserDataShape;
 }
 
-const CommentList = ({ commentData, userData }: CommentListProps) => {
+const CommentList = ({ commentData }: CommentListProps) => {
   const comment = commentData.map(c => {
     return (
       <>
