@@ -75,9 +75,7 @@ export class CommentManage {
           password: password,
         },
       })
-        .then(res => {
-          window.location.reload();
-        })
+        .then(res => {})
         .catch(err => {
           alert('삭제에 실패하였습니다. 관리자에게 문의하시기 바랍니다.');
           console.log(err);
