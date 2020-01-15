@@ -6,89 +6,57 @@
     border-top: 1px solid #ededed;
     border-bottom: 1px solid #ededed;
     display: flex;
-    .left {
-      margin-right: 20px;
-    }
-    .right {
-      width: 100%;
-      .comment-head {
-        font-weight: 700;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        .information {
-          .create_time {
-            color: darkgrey;
-            font-weight: 200;
-            font-size: 13px;
-            //margin-left: 20px;
-          }
-        }
-        .delete_icon {
-          color: grey;
-          font-weight: 200;
-          font-size: 13px;
-          border: 0;
-        }
-        .show-reply-btn {
-          color: #d60036;
-          border: 0;
-          border: 1px solid #ededed;
-          margin-left: 20px;
-          font-weight: 200;
-          font-size: 13px;
-          border-radius: 3px;
-        }
-      }
-      .comment-body {
-        margin-bottom: 16px;
-      }
-    }
   }
-  .reply {
-    background-color: #ededed;
-    border-radius: 4px;
-    margin: 16px;
-    margin-left: 80px;
-    padding: 20px;
+}
+.reply {
+  background-color: #ededed;
+  border-radius: 4px;
+  margin: 16px;
+  margin-left: 80px;
+  padding: 20px;
+  display: flex;
+}
+
+.commentInput {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.left {
+  margin-right: 20px;
+}
+.right {
+  width: 100%;
+  .comment-head {
+    font-weight: 700;
+    margin-bottom: 20px;
     display: flex;
-
-    .left {
-      margin-right: 20px;
-    }
-    .right {
-      width: 100%;
-      .comment-head {
-        font-weight: 700;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        .information {
-          .create_time {
-            color: darkgrey;
-            font-weight: 200;
-            font-size: 13px;
-            //margin-left: 20px;
-          }
-        }
-
-        .delete_icon {
-          color: grey;
-          font-weight: 200;
-          font-size: 13px;
-          border: 0;
-        }
-      }
-      .comment-body {
-        margin-bottom: 16px;
+    justify-content: space-between;
+    .information {
+      .create_time {
+        color: darkgrey;
+        font-weight: 200;
+        font-size: 13px;
+        //margin-left: 20px;
       }
     }
-    .commentInput {
-      width: 100%;
+    .delete_icon {
+      color: grey;
+      font-weight: 200;
+      font-size: 13px;
+      border: 0;
+    }
+    .show-reply-btn {
+      color: #d60036;
+      border: 0;
+      border: 1px solid #ededed;
+      margin-left: 20px;
+      font-weight: 200;
+      font-size: 13px;
       border-radius: 3px;
     }
   }
-  .reply.hidden {
-    /*display: none;*/
+  .comment-body {
+    margin-bottom: 16px;
   }
 }
