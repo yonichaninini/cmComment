@@ -2,17 +2,19 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import './commentInput.scss';
-import { CommentManage } from '../../models/CommentManage';
+import { createReply } from '../../utils/CommentManage';
+import { createComment } from '../../utils/CommentManage';
+
 interface props {
   isReply?: boolean;
   _id?: string;
+  page_url: string;
 }
-const CommentInput = ({ isReply, _id }: props) => {
+const CommentInput = ({ isReply, _id, page_url }: props) => {
   const [comment, setComment] = useState<string | undefined>('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const commentManage = new CommentManage('1');
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.currentTarget.value);
   };
@@ -27,9 +29,9 @@ const CommentInput = ({ isReply, _id }: props) => {
     if (comment === '' || undefined) {
       alert('댓글을 입력해주세요!');
     } else if (isReply) {
-      commentManage.createReply(comment, _id, email, password);
+      createReply(page_url, comment, _id, email, password);
     } else {
-      commentManage.createComment(comment, email, password);
+      createComment(page_url, comment, email, password);
     }
     setComment('');
     setEmail('');

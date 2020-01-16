@@ -8,9 +8,10 @@ import { CommentDataShape } from '../../typeShapes/comentShape';
 
 interface CommentListProps {
   commentData: CommentDataShape[];
+  page_url: string;
 }
 
-const CommentList = ({ commentData }: CommentListProps) => {
+const CommentList = ({ commentData, page_url }: CommentListProps) => {
   const comment = commentData.map(c => {
     return (
       <>
@@ -19,7 +20,7 @@ const CommentList = ({ commentData }: CommentListProps) => {
             <ProfileImg />
           </div>
           <div className="right">
-            <CommentItem create_time={c.create_time} _id={c._id} comment={c.comment} isparents={true} />
+            <CommentItem page_url={page_url} create_time={c.create_time} _id={c._id} comment={c.comment} isparents={true} />
           </div>
         </div>
         {c.children.map(r => {
@@ -29,7 +30,7 @@ const CommentList = ({ commentData }: CommentListProps) => {
                 <ProfileImg />
               </div>
               <div className="right">
-                <CommentItem create_time={r.create_time} _id={r._id} comment={r.comment} isparents={false} />
+                <CommentItem page_url={page_url} create_time={r.create_time} _id={r._id} comment={r.comment} isparents={false} />
               </div>
             </div>
           );

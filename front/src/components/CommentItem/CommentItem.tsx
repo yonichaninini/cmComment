@@ -12,9 +12,10 @@ interface ComentProps {
   create_time: number;
   comment: string;
   isparents: boolean;
+  page_url: string;
 }
 
-const Comment = ({ _id, comment, create_time, isparents }: ComentProps) => {
+const Comment = ({ _id, comment, create_time, isparents, page_url }: ComentProps) => {
   const [isShowCommentInputBox, SetIsShowCommentInputBox] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -39,7 +40,7 @@ const Comment = ({ _id, comment, create_time, isparents }: ComentProps) => {
           <div className="profile-nickname">익명</div>
           <div className="create_time">작성일 : {create_date}</div>
         </div>
-        <Modal _id={_id} isOpen={isOpenModal} close={closeModal} />
+        <Modal page_url={page_url} _id={_id} isOpen={isOpenModal} close={closeModal} />
         <button className="delete_icon" onClick={deleteBtnClick}>
           삭제
         </button>
@@ -51,12 +52,12 @@ const Comment = ({ _id, comment, create_time, isparents }: ComentProps) => {
       </div>
       {isparents ? (
         <button type="submit" onClick={onClickShowCommentInput} className="add-reply-btn">
-          {isShowCommentInputBox ? 'X' : 'REPLY'}
+          답글
         </button>
       ) : (
         ''
       )}
-      {isShowCommentInputBox ? <CommentInput _id={_id} isReply={isShowCommentInputBox} /> : ''}
+      {isShowCommentInputBox ? <CommentInput page_url={page_url} _id={_id} isReply={isShowCommentInputBox} /> : ''}
     </>
   );
 };
