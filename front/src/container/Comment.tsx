@@ -1,36 +1,35 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 /*model*/
-import { CommentManage } from '../models/CommentManage';
+import { getCommentData } from '../utils/CommentManage';
 /*type*/
 import { CommentDataShape } from '../typeShapes/comentShape';
-import { UserDataShape } from '../typeShapes/userDataShape';
 /*component*/
 import CommentList from '../components/CommentList/CommentList';
 import CommentInput from '../components/CommentInput/CommentInput';
 import CommentSortBtn from '../components/CommentSortBtn/CommentSortBtn';
+import Pagenation from '../components/Pagenation/Pagenation';
 
-const Comment = () => {
-  const user_mock: UserDataShape = {
-    user_email: 'cksal5911@naver.com',
-    user_password: '1234',
-  };
-  const commentManage = new CommentManage('1');
+interface props {
+  page_url: string;
+}
+const Comment = ({ page_url }: props) => {
   const [commentList, setCommentList] = useState<CommentDataShape[]>();
   useEffect(() => {
-    commentManage.getCommentData().then(setCommentList);
+    getCommentData(page_url).then(setCommentList);
   });
 
   return (
     <div className="wrapper">
-      <CommentInput />
+      <CommentInput page_url={page_url} />
       <div className="header-wrapper">
         <div className="comment-count">
           Total comments<span className="count-text"></span>
         </div>
         <CommentSortBtn />
       </div>
-      {commentList ? <CommentList commentData={commentList} /> : ''}
+      {commentList ? <CommentList page_url={page_url} commentData={commentList} /> : ''}
+      <Pagenation start={1} end={10} current={1} total={7} />
     </div>
   );
 };
