@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CommentManage } from '../../models/CommentManage';
+import { deleateComment } from '../../utils/CommentManage';
 
 import './modal.scss';
 
@@ -7,17 +7,17 @@ interface props {
   _id: string;
   isOpen: boolean;
   close: () => void;
+  page_url: string;
 }
 
-const Modal = ({ _id, isOpen, close }: props) => {
+const Modal = ({ page_url, _id, isOpen, close }: props) => {
   const [password, setPassword] = useState('');
 
-  const commentManage = new CommentManage('1');
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
   };
   const onSubmitPasswordCheck = (e: React.FormEvent<HTMLElement>) => {
-    commentManage.deleateComment(_id, password);
+    deleateComment(page_url, _id, password);
     close();
   };
   const CancelBtnClick = (e: React.FormEvent<HTMLElement>) => {
