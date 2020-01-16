@@ -27,11 +27,11 @@ db.once('open', function() {
   console.log('Connected to mongod server');
 });
 
-app.get('/api/comment/:post_id', commentApi.getComment);
-app.post('/api/add_comment/:post_id', commentApi.postComment);
-app.post('/api/add_reply/:post_id', commentApi.postReply);
-app.put('/api/update_comment/:post_id/:_id', commentApi.putComment);
-app.delete('/api/delete_comment/:post_id/:_id', commentApi.deleteComment);
+app.get('/api/comment/:page_url', commentApi.getComment);
+app.post('/api/add_comment/:page_url', commentApi.postComment);
+app.post('/api/add_reply/:page_url', commentApi.postReply);
+app.put('/api/update_comment/:page_url/:_id', commentApi.putComment);
+app.delete('/api/delete_comment/:page_url/:_id', commentApi.deleteComment);
 
 // [RUN SERVER]
 app.listen(port, () => {

@@ -6,7 +6,7 @@ const ObjectId = Schema.Types.ObjectId;
 export interface CommentInterface extends mongoose.Document {
   create_time: string;
   update_time: string;
-  post_id: number;
+  page_url: number;
   user: {
     user_email: string;
     user_password: string;
@@ -17,7 +17,7 @@ export interface CommentInterface extends mongoose.Document {
 const conmmentSchema = new Schema({
   create_time: Date,
   update_time: Date,
-  post_id: Number,
+  page_url: Number,
   user: {
     user_email: String,
     user_password: String,

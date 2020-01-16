@@ -9,7 +9,7 @@ const commentApi = {
   //댓글 가져오기
   getComment: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     commentModel
-      .find({ post_id: req.params.post_id })
+      .find({ page_url: req.params.page_url })
       .populate('children')
       .sort({ create_time: -1 })
       .then((comments: CommentInterface[]) => {
@@ -34,10 +34,11 @@ const commentApi = {
       create_time: new Date(),
       update_time: new Date(),
       comment: req.body.comment,
-      post_id: req.body.post_id,
+      page_url: req.body.page_url,
       user: req.body.user,
       children: [],
     });
+    console.log(req.body.page_url);
     comment.save((err: any) => {
       if (err) {
         console.error(err);
@@ -54,7 +55,7 @@ const commentApi = {
       create_time: new Date(),
       update_time: new Date(),
       comment: req.body.comment,
-      post_id: req.body.post_id,
+      page_url: req.body.page_url,
       user: req.body.user,
       parents: req.body.parents,
     });
